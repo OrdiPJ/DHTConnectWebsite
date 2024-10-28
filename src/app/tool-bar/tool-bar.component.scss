@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+@use "../../m3-theme.scss" as theme;
+
+mat-toolbar {
+    background-color: mat.get-theme-color(theme.$light-theme, primary-container);
+    color: mat.get-theme-color(theme.$light-theme, on-primary-container);
+}
