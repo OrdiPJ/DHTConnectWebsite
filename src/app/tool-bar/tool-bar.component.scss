@@ -1,7 +1,21 @@
 @use '@angular/material' as mat;
-@use "../../m3-theme.scss" as theme;
+@use "../../m3-darktheme.scss";
+@use '../../m3-theme.scss';
 
 mat-toolbar {
-    background-color: mat.get-theme-color(theme.$light-theme, primary-container);
-    color: mat.get-theme-color(theme.$light-theme, on-primary-container);
+    @media (prefers-color-scheme: light) {
+        background-color: mat.get-theme-color(m3-theme.$light-theme, primary-container);
+        color: mat.get-theme-color(m3-theme.$light-theme, on-primary-container);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: mat.get-theme-color(m3-darktheme.$dark-theme, primary-container);
+        color: mat.get-theme-color(m3-darktheme.$dark-theme, on-primary-container);
+    }
+
+}
+
+
+.spacer {
+    flex: 1 1 auto;
 }
