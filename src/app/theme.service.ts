@@ -4,6 +4,38 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
+  isDarkTheme = false;
+  constructor() {
+    if (window.matchMedia("(prefers-color-scheme: dark)")) {
+      this.isDarkTheme = true
+      document.documentElement.classList.add('dark');
+      let toolbar = document.querySelector('mat-toolbar');
+      toolbar?.classList.add('dark');
+    } else {
+      this.isDarkTheme = false
+      document.documentElement.classList.add('light');
+      let toolbar = document.querySelector('mat-toolbar');
+      toolbar?.classList.add('light');
+    }
+  }
+
+  switchTheme() {
+    if (this.isDarkTheme) {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      let toolbar = document.querySelector('mat-toolbar');
+      toolbar?.classList.remove('dark');
+      toolbar?.classList.add('light');
+      this.isDarkTheme = false;
+    } else {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      let toolbar = document.querySelector('mat-toolbar');
+      toolbar?.classList.remove('light');
+      toolbar?.classList.add('dark');
+      this.isDarkTheme = true;
+    }
+  }
   /*private isDarkTheme = false;
   constructor() { 
     this.isDarkTheme = window.matchMedia(('prefers-color-scheme: dark')).matches;

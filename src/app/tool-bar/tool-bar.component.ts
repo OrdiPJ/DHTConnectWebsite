@@ -18,6 +18,6 @@ import { ThemeService } from '../theme.service';
 export class ToolBarComponent {
   constructor(private themeService: ThemeService) {  }
   switchTheme() {
-    //this.themeService.toggleTheme();
+    this.themeService.switchTheme();
   }
 }

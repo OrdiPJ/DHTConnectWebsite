@@ -12,9 +12,32 @@ mat-toolbar {
         background-color: mat.get-theme-color(m3-darktheme.$dark-theme, primary-container);
         color: mat.get-theme-color(m3-darktheme.$dark-theme, on-primary-container);
     }
-
 }
 
+mat-toolbar.light {
+    background-color: mat.get-theme-color(m3-theme.$light-theme, primary-container);
+    color: mat.get-theme-color(m3-theme.$light-theme, on-primary-container);
+    /*@media (prefers-color-scheme: dark) {
+        background-color: mat.get-theme-color(m3-darktheme.$dark-theme, primary-container);
+        color: mat.get-theme-color(m3-darktheme.$dark-theme, on-primary-container);
+    }*/
+}
+
+mat-toolbar.dark {
+    background-color: mat.get-theme-color(m3-darktheme.$dark-theme, primary-container);
+    color: mat.get-theme-color(m3-darktheme.$dark-theme, on-primary-container);
+}
+
+/*.dark {
+    mat-toolbar {
+        background-color: mat.get-theme-color(m3-darktheme.$dark-theme, primary-container);
+        color: mat.get-theme-color(m3-darktheme.$dark-theme, on-primary-container);
+        @media (prefers-color-scheme: dark) {
+            background-color: mat.get-theme-color(m3-darktheme.$dark-theme, primary-container);
+            color: mat.get-theme-color(m3-darktheme.$dark-theme, on-primary-container);
+        }
+    }
+}*/
 
 .spacer {
     flex: 1 1 auto;
