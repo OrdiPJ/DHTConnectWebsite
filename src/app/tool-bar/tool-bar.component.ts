@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../home-page/download-dialog/download-dialog.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tool-bar',
@@ -15,7 +16,8 @@ import { DownloadDialogComponent } from '../home-page/download-dialog/download-d
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './tool-bar.component.html',
   styleUrl: './tool-bar.component.scss'

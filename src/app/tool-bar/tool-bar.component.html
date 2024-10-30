@@ -1,5 +1,6 @@
 <mat-toolbar [ngClass]="{'dark': isDarkTheme, 'light': !isDarkTheme}">
-    <button mat-button>DHT Connect</button>
+    <a routerLink="/" mat-button>DHT Connect</a>
+    <a routerLink="/construire-un-capteur" mat-button>Construire un capteur</a>
     <span class="spacer"></span>
     <button mat-icon-button (click)="switchTheme()">
         <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
