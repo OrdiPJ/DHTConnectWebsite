@@ -1,6 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { DownloadDialogComponent } from './download-dialog/download-dialog.component';
 
 @Component({
   selector: 'app-home-page',
@@ -46,5 +48,11 @@ export class HomePageComponent {
   goToSlide(index: number) {
     this.currentIndex = index;
     this.updateCarousel();
+  }
+
+  readonly dialog = inject(MatDialog);
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DownloadDialogComponent);
   }
 }
