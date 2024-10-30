@@ -3,13 +3,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { DownloadDialogComponent } from './download-dialog/download-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'

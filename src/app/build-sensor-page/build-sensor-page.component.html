@@ -1,1 +1,58 @@
-<p>build-sensor-page works!</p>
+<section>
+    <h1>Construire un capteur</h1>
+    <p>Apprenez à fabriquer un capteur compatible avec DHT Connect.</p>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Le materiel</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Pour construire votre capteur de température, vous aurez besoin de :</p>
+            <ul>
+                <li>1x Carte ESP32</li>
+                <li>1x Capteur de température DHT11</li>
+                <li>3x Fils de connection F/F</li>
+                <li>1x Chargeur de téléphone Micro-USB</li>
+            </ul>
+            <mat-action-row>
+                <button mat-button (click)="nextStep()">Suivant</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Les étapes de fabrication :</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Pour créer votre capteur de température, assemblez le materiel comme suit :</p>
+            <ol>
+                <li>Connectez la borne + du capteur à la borne 3V3 de la carte</li>
+                <li>Connectez la borne - du capteur à la borne GND de la carte</li>
+                <li>Connectez la borne OUT du capteur à la borne D13 de la carte</li>
+            </ol>
+            <mat-action-row>
+                <button mat-button (click)="prevStep()">Précédent</button>
+                <button mat-button (click)="nextStep()">Suivant</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step() === 2" (opened)="setStep(2)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Le code</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Ensuite, connectez la carte ESP32 à un ordinateur à l'aide du cable Micro-USB vers USB puis suivez ces étapes :</p>
+            <ol>
+                <li>Installez Arduino 1.8 en cliquant <a href="https://www.arduino.cc/en/software" target="_blank">ici</a>.</li>
+                <li>Cliquez sur Fichier puis Préférences et ajoutez https://dl.espressif.com/dl/package_esp32_index.json dans le champs URL de gestionnaire de cartes supplémentaires.</li>
+                <li>Rendez vous dans Outils>Types de carte>Gestionnaire de carte, recherchez esp32 et installez esp32 par Espressif Systems.</li>
+                <li>Installez les bibliothèques DHT Sensor Library et Adafruit Unified Sensor via le menu Croquis>Inclure une bibliothèque>Gérer les bibliothèques.</li>
+                <li>Téléchargez le code en cliquant <a href="code/sensor-code.ino" download="sensor-code.ino">ici</a>, puis ouvrez le avec Arduino.</li>
+                <li>Allez dans Outils>Type de carte puis selectionnez la Doit ESP32 Devkit 1.</li>
+                <li>Cliquez sur le port série ou est connectez votre carte dans Outils>Port.</li>
+                <li>Cliquez sur la flèche Téléverser pour envoyer le programme dans la carte.</li>
+                <li>Installez l'application DHT Connect sur votre téléphone, puis connectez vous au capteur pour voir les données.</li>
+            </ol>
+            <mat-action-row>
+                <button mat-button (click)="prevStep()">Précédent</button>
+                <button mat-button (click)="nextStep()">Fin</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <p>En suivant ces étapes, vous pourrez créer votre propre capteur de température.</p>
+</section>

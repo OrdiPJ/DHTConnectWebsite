@@ -20,9 +20,6 @@
         <button class="carousel-button right" mat-icon-button aria-label="Flèche vers la droite" (click)="scrollRight()"><mat-icon>arrow_forward_ios</mat-icon></button>
         <div class="carousel-indicators">
             <span *ngFor="let dot of dots; let i = index" class="dot" [class.active]="currentIndex === i" (click)="goToSlide(i)"></span>
-            <span class="dot" (click)="goToSlide(0)"></span>
-            <span class="dot" (click)="goToSlide(1)"></span>
-            <span class="dot" (click)="goToSlide(2)"></span>
         </div>
     </div>
 </section>
