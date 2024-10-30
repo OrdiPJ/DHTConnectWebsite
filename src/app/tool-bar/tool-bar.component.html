@@ -1,10 +1,10 @@
-<mat-toolbar [ngClass]="{'dark': isDarkTheme, 'light': !isDarkTheme}">
-    <a routerLink="/" mat-button>DHT Connect</a>
-    <a routerLink="/construire-un-capteur" mat-button>Construire un capteur</a>
+<mat-toolbar [ngClass]="{'dark': isDarkTheme, 'light': !isDarkTheme}" cdkMenu>
+    <a routerLink="/" mat-button cdkMenuItem>DHT Connect</a>
+    <a routerLink="/construire-un-capteur" mat-button cdkMenuItem>Construire un capteur</a>
     <span class="spacer"></span>
-    <button mat-icon-button (click)="switchTheme()">
+    <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
         <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
         <mat-icon *ngIf="isDarkTheme">light_mode</mat-icon>
     </button>
-    <button mat-button class="download-button" (click)="openDialog()">Télécharger</button>
+    <button mat-button class="download-button" (click)="openDialog()" cdkMenuItem>Télécharger</button>
 </mat-toolbar>
