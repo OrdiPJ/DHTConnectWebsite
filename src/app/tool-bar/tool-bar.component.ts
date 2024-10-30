@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../home-page/download-dialog/download-dialog.component';
 import { RouterModule } from '@angular/router';
+import { ResponsiveService } from '../services/responsive.service';
 
 @Component({
   selector: 'app-tool-bar',
@@ -24,7 +25,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ToolBarComponent implements OnInit, OnDestroy {
   readonly dialog = inject(MatDialog);
-  constructor(private themeService: ThemeService) {  }
+  constructor(private themeService: ThemeService, public responsiveService: ResponsiveService) {  }
   isDarkTheme = false;
   private themeSubscription!: Subscription;
   switchTheme() {

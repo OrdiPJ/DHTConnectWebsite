@@ -8,7 +8,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ResponsiveService implements OnDestroy {
   destroyed = new Subject<void>();
-  //currentScreenSize: string;
+  currentScreenSize: string | undefined;
 
   displayNameMap = new Map([
     [Breakpoints.XSmall, 'XSmall'],
@@ -31,7 +31,7 @@ export class ResponsiveService implements OnDestroy {
       .subscribe(result => {
         for (const query of Object.keys(result.breakpoints)) {
           if (result.breakpoints[query]) {
-            //this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+            this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
           }
         }
       });
