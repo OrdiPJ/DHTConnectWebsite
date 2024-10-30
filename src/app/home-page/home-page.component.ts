@@ -53,6 +53,8 @@ export class HomePageComponent {
   readonly dialog = inject(MatDialog);
 
   openDialog() {
-    const dialogRef = this.dialog.open(DownloadDialogComponent);
+    const dialogRef = this.dialog.open(DownloadDialogComponent, {
+      height: '450px'
+    });
   }
 }

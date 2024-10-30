@@ -1,10 +1,38 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  isDarkTheme = false;
+  private isDarkThemeSubject = new BehaviorSubject<boolean>(this.getSystemTheme());
+  isDarkTheme$ = this.isDarkThemeSubject.asObservable();
+
+  constructor() {
+    this.applyTheme(this.isDarkThemeSubject.value);  // Applique le thème au chargement
+  }
+
+  private getSystemTheme(): boolean {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  switchTheme() {
+    const newTheme = !this.isDarkThemeSubject.value;
+    this.isDarkThemeSubject.next(newTheme);
+    this.applyTheme(newTheme);
+  }
+
+  private applyTheme(isDarkTheme: boolean) {
+    if (isDarkTheme) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+  }
+}
+  /*isDarkThemeSubject = new BehaviorSubject<boolean>(this.getSystemTheme());
   constructor() {
     if (window.matchMedia("(prefers-color-scheme: dark)")) {
       this.isDarkTheme = true
@@ -35,7 +63,7 @@ export class ThemeService {
       toolbar?.classList.add('dark');
       this.isDarkTheme = true;
     }
-  }
+  }*/
   /*private isDarkTheme = false;
   constructor() { 
     this.isDarkTheme = window.matchMedia(('prefers-color-scheme: dark')).matches;
@@ -56,4 +84,4 @@ export class ThemeService {
     document.documentElement.classList.remove('dark', 'light');
     document.documentElement.classList.add(themeClass);
   }*/
-}
+
