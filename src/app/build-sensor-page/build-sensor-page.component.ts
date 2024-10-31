@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ResponsiveService } from '../services/responsive.service';
 
 @Component({
   selector: 'app-build-sensor-page',
@@ -28,5 +29,7 @@ export class BuildSensorPageComponent {
   prevStep() {
     this.step.update(i => i - 1);
   }
+
+  constructor(public responsiveService: ResponsiveService) { }
 
 }

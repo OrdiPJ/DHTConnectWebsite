@@ -1,6 +1,4 @@
 section {
-    margin: 15px 20%;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -20,4 +18,17 @@ h1 {
     font-size: medium;
     font-weight: 150;
     text-align: center;
+}
+
+p.text {
+    text-align: center;
+}
+
+.headers-align {
+    margin-left: 8px;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
 }

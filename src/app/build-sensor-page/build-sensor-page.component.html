@@ -1,8 +1,8 @@
-<section>
+<section [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
     <h1>Construire un capteur</h1>
-    <p>Apprenez à fabriquer un capteur compatible avec DHT Connect.</p>
-    <mat-accordion>
-        <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)">
+    <p class="text">Apprenez à fabriquer un capteur compatible avec DHT Connect.</p>
+    <mat-accordion class="headers-align">
+        <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)" hideToggle>
             <mat-expansion-panel-header>
                 <mat-panel-title>Le materiel</mat-panel-title>
             </mat-expansion-panel-header>
@@ -17,7 +17,7 @@
                 <button mat-button (click)="nextStep()">Suivant</button>
             </mat-action-row>
         </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)">
+        <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)" hideToggle>
             <mat-expansion-panel-header>
                 <mat-panel-title>Les étapes de fabrication :</mat-panel-title>
             </mat-expansion-panel-header>
@@ -32,7 +32,7 @@
                 <button mat-button (click)="nextStep()">Suivant</button>
             </mat-action-row>
         </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="step() === 2" (opened)="setStep(2)">
+        <mat-expansion-panel [expanded]="step() === 2" (opened)="setStep(2)" hideToggle>
             <mat-expansion-panel-header>
                 <mat-panel-title>Le code</mat-panel-title>
             </mat-expansion-panel-header>
@@ -54,5 +54,5 @@
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
-    <p>En suivant ces étapes, vous pourrez créer votre propre capteur de température.</p>
+    <p class="text">En suivant ces étapes, vous pourrez créer votre propre capteur de température.</p>
 </section>
