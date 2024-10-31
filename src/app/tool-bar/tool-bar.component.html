@@ -18,8 +18,10 @@
             <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
             <mat-icon *ngIf="isDarkTheme">light_mode</mat-icon>
         </button>
-        <button mat-icon-button class="download-button" (click)="openDialog()"
-            cdkMenuItem><mat-icon>download</mat-icon></button>
+        <button mat-button class="download-button" (click)="openDialog()"
+            cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'Small'"><mat-icon>download</mat-icon>Télécharger</button>
+            <button mat-icon-button class="download-button" (click)="openDialog()"
+            cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'XSmall'"><mat-icon>download</mat-icon></button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall'">
         <span class="spacer"></span>

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { DownloadDialogComponent } from './download-dialog/download-dialog.component';
 import { CommonModule } from '@angular/common';
+import { ResponsiveService } from '../services/responsive.service';
 
 @Component({
   selector: 'app-home-page',
@@ -59,4 +60,6 @@ export class HomePageComponent {
       height: '450px'
     });
   }
+
+  constructor(public responsiveService: ResponsiveService) {  }
 }
