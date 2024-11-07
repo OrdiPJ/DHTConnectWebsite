@@ -1,1 +1,54 @@
-<p>contact-page works!</p>
+<section
+    [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
+    <h1>Nous contacter</h1>
+    <p>Utilise ce formulaire pour nous contacter en cas de problème.</p>
+    <form>
+        <table cellspacing="0" *ngIf="responsiveService.currentScreenSize != 'XSmall'">
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label>
+                            Nom
+                        </mat-label>
+                        <input type="text" matInput placeholder="Ex: VOTRENOM">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>
+                            Prénom
+                        </mat-label>
+                        <input type="text" matInput placeholder="Ex: Votreprénom">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <div *ngIf="responsiveService.currentScreenSize == 'XSmall'">
+            <mat-form-field>
+                <mat-label>
+                    Nom
+                </mat-label>
+                <input type="text" matInput placeholder="Ex: VOTRENOM">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>
+                    Prénom
+                </mat-label>
+                <input type="text" matInput placeholder="Ex: Votreprénom">
+            </mat-form-field>
+        </div>
+        <mat-form-field>
+            <mat-label>
+                Objet
+            </mat-label>
+            <input type="text" matInput placeholder="Ex: Problème avec le programme">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Message
+            </mat-label>
+            <textarea matInput placeholder="Décrivez votre problème en détail" autocapitalize="sentences"></textarea>
+        </mat-form-field>
+        <button mat-flat-button><mat-icon>send</mat-icon>Envoyer</button>
+    </form>
+</section>
