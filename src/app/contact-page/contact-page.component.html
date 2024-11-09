@@ -2,7 +2,7 @@
     [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
     <h1>Nous contacter</h1>
     <p>Utilise ce formulaire pour nous contacter en cas de problème.</p>
-    <form>
+    <form [formGroup]="contactForm" (ngSubmit)="submit()">
         <table cellspacing="0" *ngIf="responsiveService.currentScreenSize != 'XSmall'">
             <tr>
                 <td>
@@ -10,7 +10,9 @@
                         <mat-label>
                             Nom
                         </mat-label>
-                        <input type="text" matInput placeholder="Ex: VOTRENOM">
+                        <input type="text" matInput placeholder="Ex: VOTRENOM" formControlName="name">
+                        <mat-error *ngIf="name?.hasError('required')">Veuillez saisir votre nom.</mat-error>
+                        <mat-error *ngIf="name?.hasError('minlength')">3 caractères minimum.</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
@@ -18,7 +20,9 @@
                         <mat-label>
                             Prénom
                         </mat-label>
-                        <input type="text" matInput placeholder="Ex: Votreprénom">
+                        <input type="text" matInput placeholder="Ex: Votreprénom" formControlName="firstName">
+                        <mat-error *ngIf="firstName?.hasError('required')">Veuillez saisir votre prénom.</mat-error>
+                        <mat-error *ngIf="firstName?.hasError('minlength')">3 caractères minimum.</mat-error>
                     </mat-form-field>
                 </td>
             </tr>
@@ -28,27 +32,45 @@
                 <mat-label>
                     Nom
                 </mat-label>
-                <input type="text" matInput placeholder="Ex: VOTRENOM">
+                <input type="text" matInput placeholder="Ex: VOTRENOM" formControlName="name">
+                <mat-error *ngIf="name?.hasError('required')">Veuillez saisir votre nom.</mat-error>
+                <mat-error *ngIf="name?.hasError('minlength')">3 caractères minimum.</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>
                     Prénom
                 </mat-label>
-                <input type="text" matInput placeholder="Ex: Votreprénom">
+                <input type="text" matInput placeholder="Ex: Votreprénom" formControlName="firstName">
+                <mat-error *ngIf="firstName?.hasError('required')">Veuillez saisir votre prénom.</mat-error>
+                <mat-error *ngIf="firstName?.hasError('minlength')">3 caractères minimum.</mat-error>
             </mat-form-field>
         </div>
         <mat-form-field>
             <mat-label>
+                Email
+            </mat-label>
+            <input type="email" matInput placeholder="Ex: mail@example.fr" formControlName="email">
+            <mat-error *ngIf="email?.hasError('required')">Veuillez saisir votre email.</mat-error>
+            <mat-error *ngIf="email?.hasError('minlength')">3 caractères minimum.</mat-error>
+            <mat-error *ngIf="email?.hasError('email')">L'email spécifié n'est pas valide.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
                 Objet
             </mat-label>
-            <input type="text" matInput placeholder="Ex: Problème avec le programme">
+            <input type="text" matInput placeholder="Ex: Problème avec le programme" formControlName="subject">
+            <mat-error *ngIf="subject?.hasError('required')">Veuillez saisir un objet.</mat-error>
+            <mat-error *ngIf="subject?.hasError('minlength')">3 caractères minimum.</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>
                 Message
             </mat-label>
-            <textarea matInput placeholder="Décrivez votre problème en détail" autocapitalize="sentences"></textarea>
+            <textarea matInput placeholder="Décrivez votre problème en détail" autocapitalize="sentences"
+                formControlName="message"></textarea>
+            <mat-error *ngIf="message?.hasError('required')">Veuillez saisir votre message.</mat-error>
+            <mat-error *ngIf="message?.hasError('minlength')">3 caractères minimum.</mat-error>
         </mat-form-field>
-        <button mat-flat-button><mat-icon>send</mat-icon>Envoyer</button>
+        <button mat-flat-button type="submit" [disabled]="!contactForm.valid"><mat-icon>send</mat-icon>Envoyer</button>
     </form>
 </section>
