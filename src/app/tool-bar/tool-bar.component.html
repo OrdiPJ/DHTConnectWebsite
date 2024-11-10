@@ -1,8 +1,8 @@
 <mat-toolbar [ngClass]="{'dark': isDarkTheme, 'light': !isDarkTheme}" cdkMenu>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize != 'Small' && responsiveService.currentScreenSize != 'XSmall'">
-        <a routerLink="/" mat-button cdkMenuItem>DHT Connect</a>
-        <a routerLink="/construire-un-capteur" mat-button cdkMenuItem>Construire un capteur</a>
-        <a routerLink="/nous-contacter" mat-button cdkMenuItem>Nous contacter</a>
+        <a routerLink="/" mat-button routerLinkActive="active-link" cdkMenuItem>DHT Connect</a>
+        <a routerLink="/construire-un-capteur" mat-button routerLinkActive="active-link" cdkMenuItem>Construire un capteur</a>
+        <a routerLink="/nous-contacter" mat-button routerLinkActive="active-link" cdkMenuItem>Nous contacter</a>
         <span class="spacer"></span>
         <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
             <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
@@ -12,7 +12,7 @@
             cdkMenuItem><mat-icon>download</mat-icon>Télécharger</button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall'">
-        <a routerLink="/" mat-button cdkMenuItem>DHT Connect</a>
+        <a routerLink="/" mat-button routerLinkActive="active-link" cdkMenuItem>DHT Connect</a>
         <span class="spacer"></span>
         <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
             <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
@@ -25,9 +25,9 @@
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall'">
         <span class="spacer"></span>
-        <a routerLink="/construire-un-capteur" mat-button cdkMenuItem>Construire un capteur</a>
+        <a routerLink="/construire-un-capteur" mat-button routerLinkActive="active-link" cdkMenuItem>Construire un capteur</a>
         <span class="spacer"></span>
-        <a routerLink="/nous-contacter" mat-button cdkMenuItem>Nous contacter</a>
+        <a routerLink="/nous-contacter" mat-button routerLinkActive="active-link" cdkMenuItem>Nous contacter</a>
         <span class="spacer"></span>
     </mat-toolbar-row>
 </mat-toolbar>

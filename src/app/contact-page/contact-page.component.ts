@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ResponsiveService } from '../services/responsive.service';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MailService } from '../services/mail.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact-page',
@@ -31,9 +32,20 @@ export class ContactPageComponent {
     message: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
 
+  //isSucces: boolean | undefined;
+  private _snackBar = inject(MatSnackBar);
+
   submit() {
     console.log("Submit");
-    this.mailService.sendMail('JUHEN', 'Paulin', 'paulin.juhen@outlook.com', 'Test de l\'envoi des mails', 'J\'envoie ça pour tester');
+
+    this.mailService.sendMail(this.name?.value, this.firstName?.value, this.email?.value, this.subject?.value, this.message?.value).subscribe(isSuccess => {
+      if (isSuccess) {
+        this._snackBar.open("Message envoyé avec succes.", "Fermer");
+        this.contactForm.reset();
+      } else {
+        this._snackBar.open("Une erreur s'est produite. Veuillez réessayer.", "Fermer");
+      }
+    });
   }
 
   get name() {
