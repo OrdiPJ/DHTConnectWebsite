@@ -1,0 +1,16 @@
+<section
+    [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
+    <h1>Poster une news</h1>
+    <p>Connectez vous pour poster une news</p>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>
+                Nom d'utilisateur
+            </mat-label>
+            <input type="text" matInput placeholder="Ex: redacteur" formControlName="username">
+            <mat-error *ngIf="username?.hasError('required')">Veuillez saisir votre nom d'utilisateur.</mat-error>
+            <mat-error *ngIf="username?.hasError('minlength')">3 caractères minimum.</mat-error>
+        </mat-form-field>
+        <button type="submit" mat-flat-button [disabled]="!loginForm.valid">Se connecter</button>
+    </form>
+</section>
