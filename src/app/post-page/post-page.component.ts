@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-post-page',
@@ -25,12 +26,12 @@ export class PostPageComponent {
   });
 
   submit() {
-
+    this.authService.register(this.username?.value);
   }
 
   get username() {
     return this.loginForm.get('username');
   }
 
-  constructor(public responsiveService: ResponsiveService) {  }
+  constructor(public responsiveService: ResponsiveService, private authService: AuthService) {  }
 }
