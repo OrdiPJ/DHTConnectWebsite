@@ -10,18 +10,17 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-contact-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-  ],
-  templateUrl: './contact-page.component.html',
-  styleUrl: './contact-page.component.scss'
+    selector: 'app-contact-page',
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+    ],
+    templateUrl: './contact-page.component.html',
+    styleUrl: './contact-page.component.scss'
 })
 export class ContactPageComponent {
   contactForm = new FormGroup({

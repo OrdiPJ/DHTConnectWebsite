@@ -7,15 +7,14 @@ import { MatCardModule } from '@angular/material/card';
 import { NewsType } from '../types/news-type';
 
 @Component({
-  selector: 'app-news-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule
-  ],
-  templateUrl: './news-page.component.html',
-  styleUrl: './news-page.component.scss'
+    selector: 'app-news-page',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule
+    ],
+    templateUrl: './news-page.component.html',
+    styleUrl: './news-page.component.scss'
 })
 export class NewsPageComponent implements OnInit {
   newsList: { [key: string]: NewsType } = {};

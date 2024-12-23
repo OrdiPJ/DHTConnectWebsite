@@ -11,17 +11,16 @@ import { RouterModule } from '@angular/router';
 import { ResponsiveService } from '../services/responsive.service';
 
 @Component({
-  selector: 'app-tool-bar',
-  standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    CommonModule,
-    RouterModule
-  ],
-  templateUrl: './tool-bar.component.html',
-  styleUrl: './tool-bar.component.scss'
+    selector: 'app-tool-bar',
+    imports: [
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        CommonModule,
+        RouterModule
+    ],
+    templateUrl: './tool-bar.component.html',
+    styleUrl: './tool-bar.component.scss'
 })
 export class ToolBarComponent implements OnInit, OnDestroy {
   readonly dialog = inject(MatDialog);

@@ -9,18 +9,17 @@ import { CommonModule } from '@angular/common';
 import { NewsService } from '../../services/news.service';
 
 @Component({
-  selector: 'app-dialog',
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './dialog.component.html',
-  styleUrl: './dialog.component.scss'
+    selector: 'app-dialog',
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        CommonModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './dialog.component.html',
+    styleUrl: './dialog.component.scss'
 })
 export class DialogComponent {
   postForm = new FormGroup({

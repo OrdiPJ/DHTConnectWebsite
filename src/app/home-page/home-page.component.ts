@@ -7,15 +7,14 @@ import { CommonModule } from '@angular/common';
 import { ResponsiveService } from '../services/responsive.service';
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    CommonModule
-  ],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss'
+    selector: 'app-home-page',
+    imports: [
+        MatButtonModule,
+        MatIconModule,
+        CommonModule
+    ],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
   @ViewChild('carouselTrack') carouselTrack!: ElementRef<HTMLElement>;

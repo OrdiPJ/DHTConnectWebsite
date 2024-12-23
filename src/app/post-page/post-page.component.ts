@@ -12,17 +12,16 @@ import { Dialog } from '@angular/cdk/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
-  selector: 'app-post-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './post-page.component.html',
-  styleUrl: './post-page.component.scss'
+    selector: 'app-post-page',
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './post-page.component.html',
+    styleUrl: './post-page.component.scss'
 })
 export class PostPageComponent {
   private _snackBar = inject(MatSnackBar);
