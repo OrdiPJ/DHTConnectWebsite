@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Poster une news</h2>
+<mat-dialog-content class="mat-typography">
+    <h3>Remplissez le formulaire pour poster une news</h3>
+    <form [formGroup]="postForm">
+        <mat-form-field class="full-width">
+            <mat-label>Titre :</mat-label>
+            <input type="text" matInput placeholder="Ex: Nouvelle mise à jour" formControlName="title">
+            <mat-error *ngIf="title?.hasError('required')">Veuillez saisir un titre</mat-error>
+            <mat-error *ngIf="title?.hasError('minlength')">3 caractères minimum</mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field class="full-width"> -->
+            <!-- <mat-label>Images :</mat-label> -->
+            <!-- <input type="file" placeholder="Ajouter une ou plusieurs images"> -->
+        <!-- </mat-form-field> -->
+        <mat-form-field class="full-width">
+            <mat-label>Contenu :</mat-label>
+            <textarea matInput placeholder="Ex: Nous avons ajouté de nouvelles fonctionnalités !" formControlName="content"></textarea>
+            <mat-error *ngIf="content?.hasError('required')">Veuillez saisir un contenu</mat-error>
+            <mat-error *ngIf="content?.hasError('minlength')">3 caractères minimum</mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button mat-flat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()" [disabled]="!postForm.valid">Poster</button>
+</mat-dialog-actions>

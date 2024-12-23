@@ -1,4 +1,16 @@
 <section [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
     <h1>Actualités</h1>
     <p>Retrouver ici toutes nos actualités</p>
+    <mat-card class="card" appearance="outlined" *ngFor="let news of newsList | keyvalue">
+        <mat-card-header>
+            <mat-card-title>{{news.value.title}}</mat-card-title>
+            <mat-card-subtitle>Par {{news.value.author}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{news.value.content}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a href="altstore://source?url=https://ordipj.github.io/AltstoreSource/index.json" mat-flat-button>Installer</a>
+        </mat-card-actions>
+    </mat-card>
 </section>
