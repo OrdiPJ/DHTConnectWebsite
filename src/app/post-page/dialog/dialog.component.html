@@ -8,10 +8,12 @@
             <mat-error *ngIf="title?.hasError('required')">Veuillez saisir un titre</mat-error>
             <mat-error *ngIf="title?.hasError('minlength')">3 caractères minimum</mat-error>
         </mat-form-field>
-        <!-- <mat-form-field class="full-width"> -->
-            <!-- <mat-label>Images :</mat-label> -->
-            <!-- <input type="file" placeholder="Ajouter une ou plusieurs images"> -->
-        <!-- </mat-form-field> -->
+        <mat-form-field class="full-width">
+            <mat-label>Image :</mat-label>
+            <input type="text" placeholder="Ex: https://exemple.fr/image.png" formControlName="imageURL" matInput>
+            <mat-error *ngIf="imageURL?.hasError('required')">Veuillez saisir un URL d'image</mat-error>
+            <mat-error *ngIf="imageURL?.hasError('minlength')">3 caractères minimum</mat-error>
+        </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Contenu :</mat-label>
             <textarea matInput placeholder="Ex: Nous avons ajouté de nouvelles fonctionnalités !" formControlName="content"></textarea>

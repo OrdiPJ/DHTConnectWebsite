@@ -6,23 +6,23 @@
         <a routerLink="/nous-contacter" mat-button routerLinkActive="active-link" cdkMenuItem>Nous contacter</a>
         <span class="spacer"></span>
         <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
-            <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
-            <mat-icon *ngIf="isDarkTheme">light_mode</mat-icon>
+            <mat-icon *ngIf="!isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">dark_mode</mat-icon>
+            <mat-icon *ngIf="isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">light_mode</mat-icon>
         </button>
         <button mat-button class="download-button" (click)="openDialog()"
-            cdkMenuItem><mat-icon>download</mat-icon>Télécharger</button>
+            cdkMenuItem><mat-icon aria-hidden="false" fontSet="material-symbols-outlined">download</mat-icon>Télécharger</button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall'">
         <a routerLink="/" mat-button routerLinkActive="active-link" cdkMenuItem>DHT Connect</a>
         <span class="spacer"></span>
         <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
-            <mat-icon *ngIf="!isDarkTheme">dark_mode</mat-icon>
-            <mat-icon *ngIf="isDarkTheme">light_mode</mat-icon>
+            <mat-icon *ngIf="!isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">dark_mode</mat-icon>
+            <mat-icon *ngIf="isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">light_mode</mat-icon>
         </button>
         <button mat-button class="download-button" (click)="openDialog()"
-            cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'Small'"><mat-icon>download</mat-icon>Télécharger</button>
+            cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'Small'"><mat-icon aria-hidden="false" fontSet="material-symbols-outlined">download</mat-icon>Télécharger</button>
             <button mat-icon-button class="download-button" (click)="openDialog()"
-            cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'XSmall'"><mat-icon>download</mat-icon></button>
+            cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'XSmall'"><mat-icon aria-hidden="false" fontSet="material-symbols-outlined">download</mat-icon></button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall'">
         <span class="spacer"></span>

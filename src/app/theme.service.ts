@@ -23,9 +23,10 @@ export class ThemeService {
   }
 
   private applyTheme(isDarkTheme: boolean) {
-    if (isDarkTheme) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
+    let theme = document.documentElement.style.colorScheme
+    console.log(theme);
+    if (theme == "light") {
+      theme = "dark";
     } else {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');

@@ -18,10 +18,27 @@ import { NewsType } from '../types/news-type';
 })
 export class NewsPageComponent implements OnInit {
   newsList: { [key: string]: NewsType } = {};
+  scrollObserver = document.querySelector('.scroll-observer');
+  observer = new IntersectionObserver((entries, observer) =>{
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        console.log("visible")
+        //observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 1,
+  });
+
   ngOnInit(): void {
     this.news.get().subscribe(news => {
       this.newsList = { ...this.newsList, ...news };
       console.log(this.newsList);
+      if (this.scrollObserver) {
+        this.observer.observe(this.scrollObserver)
+      }
     });
   }  
 

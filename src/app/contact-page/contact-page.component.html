@@ -71,6 +71,6 @@
             <mat-error *ngIf="message?.hasError('required')">Veuillez saisir votre message.</mat-error>
             <mat-error *ngIf="message?.hasError('minlength')">3 caractères minimum.</mat-error>
         </mat-form-field>
-        <button mat-flat-button type="submit" [disabled]="!contactForm.valid"><mat-icon>send</mat-icon>Envoyer</button>
+        <button mat-flat-button type="submit" [disabled]="!contactForm.valid"><mat-icon aria-hidden="false" fontSet="material-symbols-outlined">send</mat-icon>Envoyer</button>
     </form>
 </section>

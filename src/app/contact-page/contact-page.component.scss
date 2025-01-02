@@ -5,14 +5,17 @@ section {
 }
 
 h1 {
-    font-family: sans-serif;
-    font-size: xx-large;
+    font: var(--mat-sys-display-medium);
     margin: 0;
     text-align: center;
+    padding-bottom: 5px;
 }
 
 p {
+    font: var(--mat-sys-title-medium);
     text-align: center;
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 form {

@@ -1,6 +1,6 @@
 <section [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
     <h1>Construire un capteur</h1>
-    <p class="text">Apprenez à fabriquer un capteur compatible avec DHT Connect.</p>
+    <p class="text subtitle">Apprenez à fabriquer un capteur compatible avec DHT Connect.</p>
     <mat-accordion class="headers-align">
         <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)" hideToggle>
             <mat-expansion-panel-header>

@@ -6,14 +6,21 @@ section {
 }
 
 h1 {
-    font-family: sans-serif;
-    font-size: xx-large;
+    font: var(--mat-sys-display-medium);
     margin: 0px;
     text-align: center;
+    padding-bottom: 5px;
 }
 
 p {
+    font: var(--mat-sys-body-large);
     text-align: center;
+}
+
+.subtitle {
+    font: var(--mat-sys-title-medium);
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 .card {
@@ -22,4 +29,8 @@ p {
     p {
         text-align: start;
     }
+}
+
+mat-card {
+    margin: 5px 0;
 }

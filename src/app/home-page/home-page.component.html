@@ -1,25 +1,57 @@
-<section [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
+<section
+    [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
     <img class="icon" src="icon.png" alt="Icon de l'app DHT Connect">
-    <h1>DHT Connect</h1>
-    <p>Une app pour visualiser les données de votre capteur DHT Bluetooth.</p>
-    <p class="subtitle">Déjà disponible sur iOS et bientôt sur Android.</p>
+    <div class="header">
+        <h1>DHT Connect</h1>
+        <p>Une app pour visualiser les données de votre capteur DHT Bluetooth.</p>
+        <p class="subtitle">Déjà disponible sur iOS et bientôt sur Android.</p>
+    </div>
     <div class="buttons">
         <button mat-flat-button (click)="openDialog()">Télécharger</button>
         <button class="secondary" mat-button>
-            <mat-icon>arrow_downward</mat-icon>
+            <mat-icon aria-hidden="false" fontSet="material-symbols-outlined">arrow_downward</mat-icon>
             En savoir plus
         </button>
     </div>
+    <!-- <div class="carousel"> -->
+    <!-- <div class="carousel-track" #carouselTrack> -->
+    <!-- <img class="carousel-image" src="screenshots/homescreen.png" alt="Ecran d'acceuil de l'app DHT Connect"> -->
+    <!-- <img class="carousel-image" src="screenshots/pairingscreen.png" -->
+    <!-- alt="Ecran de jumelage de l'app DHT Connect"> -->
+    <!-- <img class="carousel-image" src="screenshots/datascreen.png" -->
+    <!-- alt="Ecran d'affichage des données de l'app DHT Connect"> -->
+    <!-- </div> -->
+    <!-- <button class="carousel-button left" mat-icon-button aria-label="Flàche vers la gauche" -->
+    <!-- (click)="scrollLeft()"><mat-icon aria-hidden="false" -->
+    <!-- fontSet="material-symbols-outlined">arrow_back_ios</mat-icon></button> -->
+    <!-- <button class="carousel-button right" mat-icon-button aria-label="Flèche vers la droite" -->
+    <!-- (click)="scrollRight()"><mat-icon aria-hidden="false" -->
+    <!-- fontSet="material-symbols-outlined">arrow_forward_ios</mat-icon></button> -->
+    <!-- <div class="carousel-indicators"> -->
+    <!-- <span *ngFor="let dot of dots; let i = index" class="dot" [class.active]="currentIndex === i" -->
+    <!-- (click)="goToSlide(i)"></span> -->
+    <!-- </div> -->
+    <!-- </div> -->
     <div class="carousel">
-        <div class="carousel-track" #carouselTrack>
-            <img class="carousel-image" src="screenshots/homescreen.png" alt="Ecran d'acceuil de l'app DHT Connect">
-            <img class="carousel-image" src="screenshots/pairingscreen.png" alt="Ecran de jumelage de l'app DHT Connect">
-            <img class="carousel-image" src="screenshots/datascreen.png" alt="Ecran d'affichage des données de l'app DHT Connect">
+        <div class="carousel-item">
+            <img src="screenshots/homescreen.png" alt="Ecran d'acceuil de l'application iOS">
         </div>
-        <button class="carousel-button left" mat-icon-button aria-label="Flàche vers la gauche" (click)="scrollLeft()"><mat-icon>arrow_back_ios</mat-icon></button>
-        <button class="carousel-button right" mat-icon-button aria-label="Flèche vers la droite" (click)="scrollRight()"><mat-icon>arrow_forward_ios</mat-icon></button>
-        <div class="carousel-indicators">
-            <span *ngFor="let dot of dots; let i = index" class="dot" [class.active]="currentIndex === i" (click)="goToSlide(i)"></span>
+        <div class="carousel-item">
+            <img src="screenshots/pairingscreen.png" alt="Ecran de jumelage du capteur de l'application iOS">
         </div>
+        <div class="carousel-item">
+            <img src="screenshots/datascreen.png"
+                alt="Ecran d'affichhage de la température et de l'humidité de l'application iOS">
+        </div>
+        <button mat-icon-button class="previous-button"><mat-icon
+                fontSet="material-symbols-outlined">arrow_back_ios</mat-icon></button>
+        <button class="next-button" mat-icon-button><mat-icon
+                fontSet="material-symbols-outlined">arrow_forward_ios</mat-icon></button>
+    </div>
+    <div class="buttons">
+        <button mat-icon-button class="previous-button"><mat-icon
+            fontSet="material-symbols-outlined">arrow_back_ios</mat-icon></button>
+    <button class="next-button" mat-icon-button><mat-icon
+            fontSet="material-symbols-outlined">arrow_forward_ios</mat-icon></button>
     </div>
 </section>

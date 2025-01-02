@@ -12,7 +12,7 @@ import { UserType } from '../types/user-type';
 })
 export class AuthService {
   // apiUrl = "https://dht-connect-api.vercel.app/api/";
-  apiUrl = "http://localhost:8080/api"
+  apiUrl = "https://dht-connect-api.vercel.app/api"
   isSucces: boolean | undefined;
   user: UserType | undefined | null;
   register(username: string | null | undefined): Observable<boolean> {

@@ -24,18 +24,23 @@ import { NewsService } from '../../services/news.service';
 export class DialogComponent {
   postForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    imageURL: new FormControl('', [Validators.required, Validators.minLength(3)]),
     content: new FormControl('', [Validators.required, Validators.minLength(3)])
   })
 
   submit() {
     console.log(this.postForm.value)
-    this.news.post(this.title?.value, this.content?.value).subscribe(resp => {
+    this.news.post(this.title?.value,this.imageURL?.value, this.content?.value).subscribe(resp => {
       console.log(resp);
     })
   }
 
   get title() {
     return this.postForm.get('title');
+  }
+
+  get imageURL() {
+    return this.postForm.get('imageURL');
   }
 
   get content() {
