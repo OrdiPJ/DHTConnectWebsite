@@ -8,10 +8,10 @@
     </div>
     <div class="buttons">
         <button mat-flat-button (click)="openDialog()">Télécharger</button>
-        <button class="secondary" mat-button>
+        <a class="secondary" mat-button href="#screenshots">
             <mat-icon aria-hidden="false" fontSet="material-symbols-outlined">arrow_downward</mat-icon>
             En savoir plus
-        </button>
+        </a>
     </div>
     <!-- <div class="carousel"> -->
     <!-- <div class="carousel-track" #carouselTrack> -->
@@ -32,7 +32,7 @@
     <!-- (click)="goToSlide(i)"></span> -->
     <!-- </div> -->
     <!-- </div> -->
-    <div class="carousel">
+    <div class="carousel" id="screenshots">
         <div class="carousel-item">
             <img src="screenshots/homescreen.png" alt="Ecran d'acceuil de l'application iOS">
         </div>
@@ -45,9 +45,9 @@
         </div>
     </div>
     <div class="carousel-buttons">
-        <button mat-icon-button class="previous-button"><mat-icon
+        <button mat-icon-button class="previous-button" (click)="previousSlide()"><mat-icon
                 fontSet="material-symbols-outlined">arrow_back_ios</mat-icon></button>
-        <button class="next-button" mat-icon-button><mat-icon
+        <button class="next-button" mat-icon-button (click)="nextSlide()"><mat-icon
                 fontSet="material-symbols-outlined">arrow_forward_ios</mat-icon></button>
     </div>
 </section>

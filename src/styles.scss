@@ -90,6 +90,7 @@
 @use './_theme-colors' as theme; // location of generated file
 
 html {
+  scroll-behavior: smooth;
   color-scheme: light dark;
   @include mat.theme((
     color: (

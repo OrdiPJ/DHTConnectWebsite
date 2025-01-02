@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +21,8 @@ export class HomePageComponent {
 
   currentIndex = 0;
   dots = [0, 1, 2]; // Ajuste en fonction du nombre d'images
+
+  index = 0;
 
   ngAfterViewInit() {
     this.updateCarousel();
@@ -59,6 +61,50 @@ export class HomePageComponent {
       height: '450px'
     });
   }
+
+  nextSlide() {
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    const visibleItemIndex = Array.from(items).findIndex(item => {
+      const rect = item.getBoundingClientRect();
+      return rect.left >=0 && rect.right <= window.innerWidth;
+    });
+
+    if (visibleItemIndex !== -1 && visibleItemIndex < items.length -1) {
+      items[visibleItemIndex + 1].scrollIntoView({
+        behavior: 'smooth',
+        inline: 'start'
+      });
+    } else {
+      items[0].scrollIntoView({
+        behavior: 'smooth',
+        inline: 'start'
+      });
+    }
+  }
+
+  previousSlide() {
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+
+    const visibleItemIndex = Array.from(items).findIndex(item => {
+        const rect = item.getBoundingClientRect();
+        return rect.left >= 0 && rect.right <= window.innerWidth;
+    });
+
+    if (visibleItemIndex > 0) {
+        items[visibleItemIndex - 1].scrollIntoView({
+            behavior: 'smooth',
+            inline: 'start'
+        });
+    } else {
+        // Optionnel : Aller au dernier élément si on est au début
+        items[items.length - 1].scrollIntoView({
+            behavior: 'smooth',
+            inline: 'start'
+        });
+    }
+}
 
   constructor(public responsiveService: ResponsiveService) {  }
 }
