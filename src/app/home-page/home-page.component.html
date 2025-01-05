@@ -32,22 +32,22 @@
     <!-- (click)="goToSlide(i)"></span> -->
     <!-- </div> -->
     <!-- </div> -->
-    <div class="carousel" id="screenshots">
-        <div class="carousel-item">
+    <div class="carousel" id="screenshots" (scroll)="onScroll(carousel)" #carousel>
+        <div class="carousel-item carousel-item-1">
             <img src="screenshots/homescreen.png" alt="Ecran d'acceuil de l'application iOS">
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item carousel-item-2">
             <img src="screenshots/pairingscreen.png" alt="Ecran de jumelage du capteur de l'application iOS">
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item carousel-item-3">
             <img src="screenshots/datascreen.png"
                 alt="Ecran d'affichhage de la température et de l'humidité de l'application iOS">
         </div>
     </div>
     <div class="carousel-buttons">
-        <button mat-icon-button class="previous-button" (click)="previousSlide()"><mat-icon
+        <button mat-icon-button class="previous-button" (click)="scrollToItem(currentIndex - 1)"><mat-icon
                 fontSet="material-symbols-outlined">arrow_back_ios</mat-icon></button>
-        <button class="next-button" mat-icon-button (click)="nextSlide()"><mat-icon
+        <button class="next-button" mat-icon-button (click)="scrollToItem(currentIndex + 1)"><mat-icon
                 fontSet="material-symbols-outlined">arrow_forward_ios</mat-icon></button>
     </div>
 </section>

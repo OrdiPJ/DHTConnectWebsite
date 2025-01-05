@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MailService {
-  apiUrl = "https://dht-connect-api.vercel.app/api/contact"
+  //apiUrl = "https://dht-connect-api.vercel.app/api/contact";
+  apiUrl = "http://localhost:8080/api/contact";
   isSucces: boolean | undefined;
 
   sendMail(name: string | null | undefined, firstName: string | null | undefined, email: string | null | undefined, subject: string | null | undefined, message: string | null | undefined): Observable<boolean> {

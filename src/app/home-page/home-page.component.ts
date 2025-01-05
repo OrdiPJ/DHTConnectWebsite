@@ -7,51 +7,54 @@ import { CommonModule } from '@angular/common';
 import { ResponsiveService } from '../services/responsive.service';
 
 @Component({
-    selector: 'app-home-page',
-    imports: [
-        MatButtonModule,
-        MatIconModule,
-        CommonModule
-    ],
-    templateUrl: './home-page.component.html',
-    styleUrl: './home-page.component.scss'
+  selector: 'app-home-page',
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    CommonModule
+  ],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.scss'
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   @ViewChild('carouselTrack') carouselTrack!: ElementRef<HTMLElement>;
 
   currentIndex = 0;
   dots = [0, 1, 2]; // Ajuste en fonction du nombre d'images
+  items = ['carousel-item-1', 'carousel-item-2', 'carousel-item-3'];
 
   index = 0;
+  carousel: Element | null = null;
 
-  ngAfterViewInit() {
-    this.updateCarousel();
+  ngOnInit() {
+    this.scrollToItem(this.currentIndex);
   }
 
-  updateCarousel() {
-    const track = this.carouselTrack.nativeElement;
-    const slides = Array.from(track.children) as HTMLElement[];
-    const slideWidth = slides[0]?.getBoundingClientRect().width || 0;
-    track.style.transform = `translateX(-${this.currentIndex * slideWidth}px)`;
+  scrollToItem(index: number) {
+    if (index >= 0 && index < this.items.length) {
+      const item = document.querySelector(`.carousel-item-${index + 1}`);
+      item?.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'start'
+      });
+      this.currentIndex = index;
+    }
   }
 
-  scrollLeft() {
-    const track = this.carouselTrack.nativeElement;
-    const slides = Array.from(track.children);
-    this.currentIndex = (this.currentIndex === 0) ? slides.length - 1 : this.currentIndex - 1;
-    this.updateCarousel();
-  }
-
-  scrollRight() {
-    const track = this.carouselTrack.nativeElement;
-    const slides = Array.from(track.children);
-    this.currentIndex = (this.currentIndex === slides.length - 1) ? 0 : this.currentIndex + 1;
-    this.updateCarousel();
-  }
-
-  goToSlide(index: number) {
-    this.currentIndex = index;
-    this.updateCarousel();
+  onScroll(carousel : HTMLElement) {
+    const carouselRect = carousel.getBoundingClientRect();
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+    this.items.forEach((_, index) => {
+      const item = document.querySelector(`.carousel-item-${index + 1}`);
+      const itemRect = item?.getBoundingClientRect();
+      const distance = Math.abs((itemRect?.left || 0) - carouselRect.left);
+      if (distance < closestDistance) {
+        closestIndex = index;
+        closestDistance = distance;
+      }
+    });
+    this.currentIndex = closestIndex;
   }
 
   readonly dialog = inject(MatDialog);
@@ -62,49 +65,5 @@ export class HomePageComponent {
     });
   }
 
-  nextSlide() {
-    const carousel = document.querySelector('.carousel');
-    const items = document.querySelectorAll('.carousel-item');
-    const visibleItemIndex = Array.from(items).findIndex(item => {
-      const rect = item.getBoundingClientRect();
-      return rect.left >=0 && rect.right <= window.innerWidth;
-    });
-
-    if (visibleItemIndex !== -1 && visibleItemIndex < items.length -1) {
-      items[visibleItemIndex + 1].scrollIntoView({
-        behavior: 'smooth',
-        inline: 'start'
-      });
-    } else {
-      items[0].scrollIntoView({
-        behavior: 'smooth',
-        inline: 'start'
-      });
-    }
-  }
-
-  previousSlide() {
-    const carousel = document.querySelector('.carousel');
-    const items = document.querySelectorAll('.carousel-item');
-
-    const visibleItemIndex = Array.from(items).findIndex(item => {
-        const rect = item.getBoundingClientRect();
-        return rect.left >= 0 && rect.right <= window.innerWidth;
-    });
-
-    if (visibleItemIndex > 0) {
-        items[visibleItemIndex - 1].scrollIntoView({
-            behavior: 'smooth',
-            inline: 'start'
-        });
-    } else {
-        // Optionnel : Aller au dernier élément si on est au début
-        items[items.length - 1].scrollIntoView({
-            behavior: 'smooth',
-            inline: 'start'
-        });
-    }
-}
-
-  constructor(public responsiveService: ResponsiveService) {  }
+  constructor(public responsiveService: ResponsiveService) { }
 }
