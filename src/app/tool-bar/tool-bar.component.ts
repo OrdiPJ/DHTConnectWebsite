@@ -2,13 +2,14 @@ import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { ThemeService } from '../theme.service';
+import { ThemeService } from '../services/theme.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DownloadDialogComponent } from '../home-page/download-dialog/download-dialog.component';
 import { RouterModule } from '@angular/router';
 import { ResponsiveService } from '../services/responsive.service';
+import { MatMenuModule } from "@angular/material/menu";
 
 @Component({
     selector: 'app-tool-bar',
@@ -17,29 +18,17 @@ import { ResponsiveService } from '../services/responsive.service';
         MatIconModule,
         MatButtonModule,
         CommonModule,
-        RouterModule
+        RouterModule,
+        MatMenuModule
     ],
     templateUrl: './tool-bar.component.html',
     styleUrl: './tool-bar.component.scss'
 })
-export class ToolBarComponent implements OnInit, OnDestroy {
+export class ToolBarComponent {
   readonly dialog = inject(MatDialog);
-  constructor(private themeService: ThemeService, public responsiveService: ResponsiveService) {  }
+  constructor(public themeService: ThemeService, public responsiveService: ResponsiveService) {  }
   isDarkTheme = false;
   private themeSubscription!: Subscription;
-  switchTheme() {
-    this.themeService.switchTheme();
-  }
-
-  ngOnInit(): void {
-    this.themeSubscription = this.themeService.isDarkTheme$.subscribe(isDark => {
-      this.isDarkTheme = isDark;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
-  }
 
   openDialog() {
     const dialogRef = this.dialog.open(DownloadDialogComponent, {

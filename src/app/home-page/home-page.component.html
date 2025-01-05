@@ -45,9 +45,9 @@
         </div>
     </div>
     <div class="carousel-buttons">
-        <button mat-icon-button class="previous-button" (click)="scrollToItem(currentIndex - 1)"><mat-icon
+        <button mat-icon-button class="previous-button" (click)="scrollToItem(currentIndex - 1)" [disabled]="currentIndex === 0"><mat-icon
                 fontSet="material-symbols-outlined">arrow_back_ios</mat-icon></button>
-        <button class="next-button" mat-icon-button (click)="scrollToItem(currentIndex + 1)"><mat-icon
+        <button class="next-button" mat-icon-button (click)="scrollToItem(currentIndex + 1)" [disabled]="currentIndex === items.length - 1"><mat-icon
                 fontSet="material-symbols-outlined">arrow_forward_ios</mat-icon></button>
     </div>
 </section>

@@ -5,20 +5,34 @@
         <a routerLink="/news" mat-button cdkMenuItem>Actualités</a>
         <a routerLink="/nous-contacter" mat-button routerLinkActive="active-link" cdkMenuItem>Nous contacter</a>
         <span class="spacer"></span>
-        <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
-            <mat-icon *ngIf="!isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">dark_mode</mat-icon>
-            <mat-icon *ngIf="isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">light_mode</mat-icon>
+        <button mat-icon-button [matMenuTriggerFor]="menu1">
+            <mat-icon aria-hidden="false" fontSet="material-symbols-outlined">{{themeService.selectedTheme()?.icon}}</mat-icon>
         </button>
+        <mat-menu #menu1="matMenu">
+            @for (theme of themeService.getThemes(); track theme.name) {
+                <button mat-menu-item (click)="themeService.setTheme(theme.name)">
+                    <mat-icon fontSet="material-symbols-outlined" aria-hidden="false">{{theme.icon}}</mat-icon>
+                    <span>{{theme.name | titlecase}}</span>
+                </button>
+            }
+        </mat-menu>
         <button mat-button class="download-button" (click)="openDialog()"
             cdkMenuItem><mat-icon aria-hidden="false" fontSet="material-symbols-outlined">download</mat-icon>Télécharger</button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall'">
         <a routerLink="/" mat-button routerLinkActive="active-link" cdkMenuItem>DHT Connect</a>
         <span class="spacer"></span>
-        <button mat-icon-button (click)="switchTheme()" cdkMenuItem>
-            <mat-icon *ngIf="!isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">dark_mode</mat-icon>
-            <mat-icon *ngIf="isDarkTheme" aria-hidden="false" fontSet="material-symbols-outlined">light_mode</mat-icon>
+        <button mat-icon-button [matMenuTriggerFor]="menu2">
+            <mat-icon aria-hidden="false" fontSet="material-symbols-outlined">{{themeService.selectedTheme()?.icon}}</mat-icon>
         </button>
+        <mat-menu #menu2="matMenu">
+            @for (theme of themeService.getThemes(); track theme.name) {
+                <button mat-menu-item (click)="themeService.setTheme(theme.name)">
+                    <mat-icon fontSet="material-symbols-outlined" aria-hidden="false">{{theme.icon}}</mat-icon>
+                    <span>{{theme.name | titlecase}}</span>
+                </button>
+            }
+        </mat-menu>
         <button mat-button class="download-button" (click)="openDialog()"
             cdkMenuItem *ngIf="responsiveService.currentScreenSize == 'Small'"><mat-icon aria-hidden="false" fontSet="material-symbols-outlined">download</mat-icon>Télécharger</button>
             <button mat-icon-button class="download-button" (click)="openDialog()"
