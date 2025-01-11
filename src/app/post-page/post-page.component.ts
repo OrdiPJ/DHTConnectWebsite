@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { ResponsiveService } from '../services/responsive.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +23,7 @@ import { DialogComponent } from './dialog/dialog.component';
     templateUrl: './post-page.component.html',
     styleUrl: './post-page.component.scss'
 })
-export class PostPageComponent {
+export class PostPageComponent implements OnInit, AfterViewInit {
   private _snackBar = inject(MatSnackBar);
   readonly dialog = inject(MatDialog);
 
@@ -32,8 +32,9 @@ export class PostPageComponent {
   });
 
   submit() {
-    this.authService.login(this.username?.value).subscribe(succes => {
+    this.authService.login(this.username?.value, false).subscribe(succes => {
       if (succes) {
+        console.log(this.authService.user)
         const dialogRef = this.dialog.open(DialogComponent);
         dialogRef.afterClosed().subscribe(result => {
           console.log(`Dialog result : ${result}`);
@@ -48,5 +49,22 @@ export class PostPageComponent {
     return this.loginForm.get('username');
   }
 
+  ngOnInit(): void {
+    this.authService.login("", true).subscribe(succes => {
+      if (succes) {
+        console.log(this.authService.user);
+        const dialogRef = this.dialog.open(DialogComponent);
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog result : ${result}`);
+        });
+      } else {
+        this._snackBar.open("Une erreur s'est produite lors de la connection", "Fermer");
+      }
+    })
+  }
+
   constructor(public responsiveService: ResponsiveService, private authService: AuthService) {  }
+  ngAfterViewInit(): void {
+    console.log(this.username?.value);
+  }
 }

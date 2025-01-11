@@ -47,24 +47,25 @@ export class AuthService {
 
   }
 
-  login(username: string | null | undefined): Observable<boolean> {
+  login(username: string | null | undefined, useAutofill: boolean): Observable<boolean> {
     return new Observable<boolean>((observer) => {
       this.http.get<PublicKeyCredentialCreationOptionsJSON>(`${this.apiUrl}/login/${username}`).subscribe(async options => {
         let asseResp;
         try {
-          asseResp = await startAuthentication({ optionsJSON: options });
+          asseResp = await startAuthentication({ optionsJSON: options, useBrowserAutofill: useAutofill });
+          console.log(asseResp);
         } catch(error) {
           console.error(error);
           throw error;
         }
-        this.http.post<any>(`${this.apiUrl}/login/verify/${username}/${options.challenge}`, asseResp).subscribe(resp => {
+        this.http.post<any>(`${this.apiUrl}/login/verify/${asseResp.id}/${options.challenge}`, asseResp).subscribe(resp => {
           if (resp.error) {
             console.error(resp.error);
             observer.next(false);
             observer.complete();
           } else {
             this.user = {
-              username: username || "No Name",
+              username: resp.username,
               token: resp.token
             }
             observer.next(true);

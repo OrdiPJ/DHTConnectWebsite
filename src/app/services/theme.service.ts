@@ -2,6 +2,7 @@ import { computed, effect, Injectable, signal } from '@angular/core';
 
 export interface AppTheme {
   name: 'light' | 'dark' | 'system',
+  displayName: string,
   icon: string
 }
 
@@ -9,19 +10,22 @@ export interface AppTheme {
   providedIn: 'root'
 })
 export class ThemeService {
-  appTheme = signal<'light' | 'dark' | 'system'>('system');
+  appTheme = signal<'light' | 'dark' | 'system'>((localStorage.getItem('appTheme') as 'light' | 'dark' | 'system') || 'system');
 
   themes: AppTheme[] = [
     {
       name: 'light',
+      displayName: "Clair",
       icon: 'light_mode'
     },
     {
       name: 'dark',
+      displayName: "Sombre",
       icon: 'dark_mode'
     },
     {
       name: 'system',
+      displayName: 'Système',
       icon: 'brightness_4'
     }
   ];
@@ -36,6 +40,7 @@ export class ThemeService {
 
   setTheme(name: 'light' | 'dark' | 'system') {
     this.appTheme.set(name);
+    localStorage.setItem('appTheme', name);
   }
 
   setAppTheme = effect(() => {

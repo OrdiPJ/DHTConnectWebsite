@@ -7,7 +7,7 @@
             <mat-label>
                 Nom d'utilisateur
             </mat-label>
-            <input type="text" matInput placeholder="Ex: redacteur" formControlName="username">
+            <input type="text" matInput placeholder="Ex: redacteur" formControlName="username" autocomplete="username webauthn">
             <mat-error *ngIf="username?.hasError('required')">Veuillez saisir votre nom d'utilisateur.</mat-error>
             <mat-error *ngIf="username?.hasError('minlength')">3 caractères minimum.</mat-error>
         </mat-form-field>
