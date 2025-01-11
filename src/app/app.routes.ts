@@ -4,11 +4,13 @@ import { BuildSensorPageComponent } from './build-sensor-page/build-sensor-page.
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { NewsPageComponent } from './news-page/news-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
+import { LegalsPageComponent } from './legals-page/legals-page.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
     { path: 'construire-un-capteur', component: BuildSensorPageComponent },
     { path: 'nous-contacter', component: ContactPageComponent },
     { path: 'news', component: NewsPageComponent },
-    { path: 'post', component: PostPageComponent }
+    { path: 'post', component: PostPageComponent },
+    { path: 'legals', component: LegalsPageComponent }
 ];
