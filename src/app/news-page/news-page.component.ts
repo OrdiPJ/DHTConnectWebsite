@@ -17,7 +17,8 @@ import { NewsType } from '../types/news-type';
     styleUrl: './news-page.component.scss'
 })
 export class NewsPageComponent implements OnInit {
-  newsList: { [key: string]: NewsType } = {};
+  lastIndex = 1;
+  newsList: Array<NewsType> = [];
   scrollObserver = document.querySelector('.scroll-observer');
   observer = new IntersectionObserver((entries, observer) =>{
     entries.forEach(entry => {
@@ -34,10 +35,23 @@ export class NewsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.news.get().subscribe(news => {
-      this.newsList = { ...this.newsList, ...news };
+      console.log(news);
+      this.newsList = news.posts;
+      console.log(this.newsList);
+      this.lastIndex++;
       console.log(this.newsList);
       if (this.scrollObserver) {
         this.observer.observe(this.scrollObserver)
+      }
+    });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        this.news.get(this.lastIndex).subscribe(news=> {
+          console.log(news);
+          this.newsList = this.newsList.concat(news.posts);
+          console.log(this.newsList);
+          this.lastIndex++;
+        });
       }
     });
   }  

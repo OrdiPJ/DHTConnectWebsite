@@ -1,7 +1,19 @@
 <section [ngStyle]="(responsiveService.currentScreenSize == 'Small' || responsiveService.currentScreenSize == 'XSmall') ? {'margin': '15px 5%'} : {'margin': '15px 20%'}">
     <h1>Actualités</h1>
     <p class="subtitle">Retrouver ici toutes nos actualités</p>
-    <mat-card class="card" appearance="outlined" *ngFor="let news of newsList | keyvalue">
+    @for (post of newsList; track post) {
+        <mat-card class="card" appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{post.title}}</mat-card-title>
+                <mat-card-subtitle>Par {{post.author}}</mat-card-subtitle>
+            </mat-card-header>
+            <img [src]="post.imageURL" alt="Image de la news">
+            <mat-card-content>
+                <p>{{post.content}}</p>
+            </mat-card-content>
+        </mat-card>
+    }
+    <!-- <mat-card class="card" appearance="outlined" *ngFor="let news of newsList | keyvalue">
         <mat-card-header>
             <mat-card-title>{{news.value.title}}</mat-card-title>
             <mat-card-subtitle>Par {{news.value.author}}</mat-card-subtitle>
@@ -10,6 +22,6 @@
         <mat-card-content>
             <p>{{news.value.content}}</p>
         </mat-card-content>
-    </mat-card>
+    </mat-card> -->
     <span class="scroll-observer"></span>
 </section>
